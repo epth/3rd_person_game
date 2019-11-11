@@ -1,0 +1,133 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=31 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "idle_weapon_down"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "idle_weapon_up"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "run"
+
+[sub_resource type="AnimationNodeTimeScale" id=4]
+
+[sub_resource type="AnimationNodeBlendTree" id=5]
+nodes/Animation/node = SubResource( 3 )
+nodes/Animation/position = Vector2( 40, 80 )
+nodes/TimeScale/node = SubResource( 4 )
+nodes/TimeScale/position = Vector2( 260, 60 )
+nodes/output/position = Vector2( 460, 140 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "slash_01"
+
+[sub_resource type="AnimationNodeTimeScale" id=7]
+
+[sub_resource type="AnimationNodeBlendTree" id=8]
+nodes/Animation/node = SubResource( 6 )
+nodes/Animation/position = Vector2( 20, 40 )
+nodes/TimeScale/node = SubResource( 7 )
+nodes/TimeScale/position = Vector2( 240, 40 )
+nodes/output/position = Vector2( 440, 80 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "slash_02"
+
+[sub_resource type="AnimationNodeTimeScale" id=10]
+
+[sub_resource type="AnimationNodeBlendTree" id=11]
+nodes/Animation/node = SubResource( 9 )
+nodes/Animation/position = Vector2( 60, 60 )
+nodes/TimeScale/node = SubResource( 10 )
+nodes/TimeScale/position = Vector2( 240, 60 )
+nodes/output/position = Vector2( 440, 100 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "slash_03"
+
+[sub_resource type="AnimationNodeTimeScale" id=13]
+
+[sub_resource type="AnimationNodeBlendTree" id=14]
+nodes/Animation/node = SubResource( 12 )
+nodes/Animation/position = Vector2( 60, 60 )
+nodes/TimeScale/node = SubResource( 13 )
+nodes/TimeScale/position = Vector2( 220, 80 )
+nodes/output/position = Vector2( 380, 100 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "slash_04"
+
+[sub_resource type="AnimationNodeTimeScale" id=16]
+
+[sub_resource type="AnimationNodeBlendTree" id=17]
+nodes/Animation/node = SubResource( 15 )
+nodes/Animation/position = Vector2( 60, 80 )
+nodes/TimeScale/node = SubResource( 16 )
+nodes/TimeScale/position = Vector2( 280, 80 )
+nodes/output/position = Vector2( 500, 120 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+xfade_time = 0.1
+
+[resource]
+states/idle_weapon_down/node = SubResource( 1 )
+states/idle_weapon_down/position = Vector2( 193, 116 )
+states/idle_weapon_up/node = SubResource( 2 )
+states/idle_weapon_up/position = Vector2( 728, 98 )
+states/run/node = SubResource( 5 )
+states/run/position = Vector2( 601, 14 )
+states/slash_01/node = SubResource( 8 )
+states/slash_01/position = Vector2( 212.322, 206.588 )
+states/slash_02/node = SubResource( 11 )
+states/slash_02/position = Vector2( 423.322, 206.588 )
+states/slash_03/node = SubResource( 14 )
+states/slash_03/position = Vector2( 666.322, 285.588 )
+states/slash_04/node = SubResource( 17 )
+states/slash_04/position = Vector2( 849.322, 206.588 )
+transitions = [ "idle_weapon_down", "idle_weapon_up", SubResource( 18 ), "idle_weapon_down", "run", SubResource( 19 ), "run", "idle_weapon_up", SubResource( 20 ), "run", "idle_weapon_down", SubResource( 21 ), "idle_weapon_up", "run", SubResource( 22 ), "idle_weapon_down", "slash_01", SubResource( 23 ), "slash_01", "idle_weapon_down", SubResource( 24 ), "run", "slash_01", SubResource( 25 ), "slash_02", "idle_weapon_down", SubResource( 26 ), "slash_01", "slash_02", SubResource( 27 ), "slash_03", "idle_weapon_down", SubResource( 28 ), "slash_04", "idle_weapon_down", SubResource( 29 ), "slash_02", "slash_04", SubResource( 30 ) ]
+start_node = "idle_weapon_down"
+graph_offset = Vector2( 79.3222, 54.292 )

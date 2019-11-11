@@ -1,0 +1,180 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scene/swordman1.5.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Script/RotationHelperX.gd" type="Script" id=2]
+[ext_resource path="res://Script/Player.gd" type="Script" id=3]
+[ext_resource path="res://Script/MouseCenter.gd" type="Script" id=4]
+[ext_resource path="res://Scene/World.gd" type="Script" id=5]
+[ext_resource path="res://image/Ground23_col.jpg" type="Texture" id=6]
+[ext_resource path="res://Scene/Boss.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Script/statemachineplaybackSpy.gd" type="Script" id=8]
+[ext_resource path="res://Script/swordman.gd" type="Script" id=9]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.340716
+height = 1.30161
+
+[sub_resource type="NavigationMesh" id=2]
+vertices = PoolVector3Array( -9.8, 0.35, -19.4, -19.4, 0.35, -19.4, -19.4, 0.35, -9.8, -19.4, 0.35, 9.4, -19.4, 0.35, 19.3, -9.8, 0.35, 19.3, 19.3, 0.35, -9.8, 19.3, 0.35, -19.4, 9.4, 0.35, -19.4, 9.4, 0.35, 19.3, 19.3, 0.35, 19.3, 19.3, 0.35, 9.4, -0.199999, 0.35, -19.4, -9.8, 0.35, -19.4, -19.4, 0.35, -9.8, -19.4, 0.35, -0.199999, -19.4, 0.35, 9.4, -9.8, 0.35, 19.3, -0.199999, 0.35, 19.3, 19.3, 0.35, -0.199999, 19.3, 0.35, -9.8, 9.4, 0.35, -19.4, -0.199999, 0.35, -19.4, -0.199999, 0.35, 19.3, 9.4, 0.35, 19.3, 19.3, 0.35, 9.4, -19.4, 0.35, -0.199999, -19.4, 0.35, 9.4, -0.199999, 0.35, 19.3, 19.3, 0.35, 9.4, 19.3, 0.35, -0.199999, -0.199999, 0.35, -19.4 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 11, 10, 9 ), PoolIntArray( 15, 14, 12 ), PoolIntArray( 12, 14, 13 ), PoolIntArray( 18, 17, 16 ), PoolIntArray( 22, 21, 19 ), PoolIntArray( 19, 21, 20 ), PoolIntArray( 25, 24, 23 ), PoolIntArray( 31, 30, 26 ), PoolIntArray( 26, 30, 29 ), PoolIntArray( 26, 29, 27 ), PoolIntArray( 27, 29, 28 ) ]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 3 )
+size = Vector3( 40, 0.1, 40 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 20, 0.05, 20 )
+
+[node name="World" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="Player" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.91138 )
+collision_layer = 2
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="RotationHelperCenter" type="Position3D" parent="Player"]
+visible = false
+
+[node name="RotationHelperX" type="Position3D" parent="Player/RotationHelperCenter"]
+transform = Transform( -1, 0, 3.25841e-07, 1.35198e-08, 0.999139, 0.041492, -3.25561e-07, 0.041492, -0.999139, -0.5, 1.5, -1.5 )
+visible = false
+script = ExtResource( 2 )
+
+[node name="MouseCenter" type="Control" parent="Player/RotationHelperCenter/RotationHelperX"]
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 552.0
+margin_bottom = 340.0
+rect_pivot_offset = Vector2( 20, 20 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2701, 2.33053, 0 )
+near = 1.0
+target = NodePath("../RotationHelperCenter/RotationHelperX")
+speed = 30.0
+enabled = true
+
+[node name="Tween" type="Tween" parent="Player"]
+
+[node name="RotationHelperY" type="Position3D" parent="Player"]
+
+[node name="player" parent="Player" instance=ExtResource( 1 )]
+script = ExtResource( 9 )
+
+[node name="statemachineplaybackSpy" type="Node" parent="Player"]
+script = ExtResource( 8 )
+
+[node name="MonsterSpawnPostion" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.264, 0.3, 9.018 )
+visible = false
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance/StaticBody"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Boss" parent="Navigation/NavigationMeshInstance/StaticBody" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0115047, 0.0103335, -0.0171733 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.546277, 0.837604, 0, -0.837604, -0.546277, 0, 2.47653, 0 )
+
+[node name="GUI" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
+margin_right = 1022.0
+margin_bottom = 601.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer"]
+margin_right = 1022.0
+margin_bottom = 50.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/HBoxContainer"]
+margin_right = 61.0
+margin_bottom = 50.0
+
+[node name="Label2" type="Label" parent="GUI/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 61.0
+margin_bottom = 14.0
+text = "  Lv1"
+
+[node name="Label" type="Label" parent="GUI/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 61.0
+margin_bottom = 32.0
+text = "SHOOTER"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="GUI/VBoxContainer/HBoxContainer"]
+margin_left = 65.0
+margin_right = 1022.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+split_offset = 200
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GUI/VBoxContainer/HBoxContainer/HSplitContainer"]
+margin_right = 246.0
+margin_bottom = 50.0
+rect_clip_content = true
+
+[node name="CenterContainer" type="HBoxContainer" parent="GUI/VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2"]
+margin_right = 246.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GUI/VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/CenterContainer"]
+margin_right = 46.0
+margin_bottom = 14.0
+text = "xiaohei"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 246.0
+margin_bottom = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="GUI/VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/VBoxContainer"]
+margin_right = 246.0
+margin_bottom = 14.0
+value = 100.0
+
+[node name="ProgressBar2" type="ProgressBar" parent="GUI/VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/VBoxContainer"]
+margin_top = 18.0
+margin_right = 246.0
+margin_bottom = 32.0
+value = 100.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/VBoxContainer/HBoxContainer/HSplitContainer"]
+margin_left = 258.0
+margin_right = 957.0
+margin_bottom = 50.0

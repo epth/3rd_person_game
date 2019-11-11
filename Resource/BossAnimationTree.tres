@@ -1,0 +1,86 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=25 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "casting"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "idle_cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "idle_cycle2"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "slash2"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "slash3"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "walk_cycle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+
+[resource]
+states/casting/node = SubResource( 1 )
+states/casting/position = Vector2( 425, 226 )
+states/idle_cycle/node = SubResource( 2 )
+states/idle_cycle/position = Vector2( 109, 52 )
+states/idle_cycle2/node = SubResource( 3 )
+states/idle_cycle2/position = Vector2( 334, -54 )
+states/slash2/node = SubResource( 4 )
+states/slash2/position = Vector2( -72, 181 )
+states/slash3/node = SubResource( 5 )
+states/slash3/position = Vector2( 117, 328 )
+states/walk_cycle/node = SubResource( 6 )
+states/walk_cycle/position = Vector2( 328, 52 )
+transitions = [ "idle_cycle", "walk_cycle", SubResource( 7 ), "idle_cycle", "idle_cycle2", SubResource( 8 ), "walk_cycle", "idle_cycle", SubResource( 9 ), "idle_cycle", "casting", SubResource( 10 ), "walk_cycle", "casting", SubResource( 11 ), "casting", "idle_cycle", SubResource( 12 ), "idle_cycle", "slash2", SubResource( 13 ), "walk_cycle", "slash2", SubResource( 14 ), "slash2", "idle_cycle", SubResource( 15 ), "idle_cycle", "slash3", SubResource( 16 ), "walk_cycle", "slash3", SubResource( 17 ), "slash3", "idle_cycle", SubResource( 18 ), "slash2", "slash3", SubResource( 19 ), "slash3", "slash2", SubResource( 20 ), "slash3", "casting", SubResource( 21 ), "casting", "slash3", SubResource( 22 ), "casting", "slash2", SubResource( 23 ), "slash2", "casting", SubResource( 24 ) ]
+start_node = "idle_cycle"
+graph_offset = Vector2( -280, 124.256 )

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://image/health bar.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 205.158
+margin_right = 2005.16
+margin_bottom = 140.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 216.0
+margin_top = 10.0
+margin_right = 1999.0
+margin_bottom = 136.0
+value = 100.0
+texture_progress = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 211.0
+margin_bottom = 175.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = -40.6025
+margin_top = -0.093111
+margin_right = -24.6025
+margin_bottom = 13.9069
+rect_scale = Vector2( 15, 15 )
+text = "18"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

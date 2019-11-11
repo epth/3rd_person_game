@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scene/Boss1.5.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Script/Boss.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.49442
+height = 2.28462
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+flags_albedo_tex_force_srgb = true
+params_billboard_mode = 1
+
+[sub_resource type="ViewportTexture" id=3]
+viewport_path = NodePath("Viewport")
+
+[node name="Boss" type="KinematicBody"]
+collision_layer = 3
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-007, -1, 0, 1, -1.62921e-007, 0, 1.65037, 0 )
+shape = SubResource( 1 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 400, 20 )
+transparent_bg = true
+disable_3d = true
+usage = 0
+render_target_v_flip = true
+
+[node name="Control" type="Control" parent="Viewport"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Progress" type="ProgressBar" parent="Viewport/Control"]
+margin_right = 400.0
+margin_bottom = 20.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55842, 0 )
+material_override = SubResource( 2 )
+cast_shadow = 0
+texture = SubResource( 3 )
+
+[node name="monster" parent="." instance=ExtResource( 1 )]

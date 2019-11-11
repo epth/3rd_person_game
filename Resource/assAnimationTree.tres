@@ -1,0 +1,100 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=23 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "idle_cycle"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "running_slow_cycle"
+
+[sub_resource type="AnimationNodeTimeScale" id=3]
+
+[sub_resource type="AnimationNodeBlendTree" id=4]
+nodes/Animation/node = SubResource( 2 )
+nodes/Animation/position = Vector2( 20, 80 )
+nodes/TimeScale/node = SubResource( 3 )
+nodes/TimeScale/position = Vector2( 336, 73 )
+nodes/output/position = Vector2( 500, 140 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "shooting_arrow_cycle.end"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "shooting_arrow_cycle.freeze"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "shooting_arrow_cycle.head"
+
+[sub_resource type="AnimationNodeTimeScale" id=8]
+
+[sub_resource type="AnimationNodeBlendTree" id=9]
+graph_offset = Vector2( -134, 16 )
+nodes/Animation/node = SubResource( 7 )
+nodes/Animation/position = Vector2( 40, 80 )
+nodes/TimeScale/node = SubResource( 8 )
+nodes/TimeScale/position = Vector2( 340, 60 )
+nodes/output/position = Vector2( 520, 100 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "unarmed_jump_up"
+
+[sub_resource type="AnimationNodeTimeScale" id=11]
+
+[sub_resource type="AnimationNodeBlendTree" id=12]
+nodes/Animation/node = SubResource( 10 )
+nodes/Animation/position = Vector2( 60, 60 )
+nodes/TimeScale/node = SubResource( 11 )
+nodes/TimeScale/position = Vector2( 340, 40 )
+nodes/output/position = Vector2( 520, 80 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+xfade_time = 0.1
+
+[resource]
+states/idle_cycle/node = SubResource( 1 )
+states/idle_cycle/position = Vector2( 287, 61 )
+states/running_slow_cycle/node = SubResource( 4 )
+states/running_slow_cycle/position = Vector2( 609, 36 )
+states/shooting_arrow_cycle.end/node = SubResource( 5 )
+states/shooting_arrow_cycle.end/position = Vector2( 211, 126 )
+states/shooting_arrow_cycle.freeze/node = SubResource( 6 )
+states/shooting_arrow_cycle.freeze/position = Vector2( 437, 208 )
+states/shooting_arrow_cycle_head/node = SubResource( 9 )
+states/shooting_arrow_cycle_head/position = Vector2( 755, 126 )
+states/unarmed_jump_up/node = SubResource( 12 )
+states/unarmed_jump_up/position = Vector2( 457.884, -41 )
+transitions = [ "shooting_arrow_cycle.end", "idle_cycle", SubResource( 13 ), "idle_cycle", "running_slow_cycle", SubResource( 14 ), "running_slow_cycle", "idle_cycle", SubResource( 15 ), "shooting_arrow_cycle.freeze", "shooting_arrow_cycle.end", SubResource( 16 ), "running_slow_cycle", "shooting_arrow_cycle_head", SubResource( 17 ), "shooting_arrow_cycle_head", "shooting_arrow_cycle.freeze", SubResource( 18 ), "shooting_arrow_cycle_head", "idle_cycle", SubResource( 19 ), "idle_cycle", "unarmed_jump_up", SubResource( 20 ), "unarmed_jump_up", "idle_cycle", SubResource( 21 ), "running_slow_cycle", "unarmed_jump_up", SubResource( 22 ) ]
+start_node = "idle_cycle"
+graph_offset = Vector2( -45.116, -101 )
