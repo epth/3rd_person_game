@@ -7,7 +7,7 @@ Currently this project is just a demo,the sword man can't damage the wolf man,an
     
 ## Tip:
 
-To open this project you need build Godot with module futari-addon,otherwise may cause crash:tscn cant open etc..
+To open this project you need build Godot with module [futari-addon](https://gitlab.com/polymorphcool/futari-addon）,otherwise may cause crash:tscn cant open etc..
 This is the link:https://gitlab.com/polymorphcool/futari-addon   
 
 
