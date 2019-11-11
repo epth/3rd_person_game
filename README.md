@@ -1,10 +1,10 @@
 # 3rd_person_game
 my first game,the 3rd person game
 
-##About:
-    Currently this project is just a demo,the sword man can't damage the wolf man,and there is a shooter <b>ass6.5</b>.tscn exist in the Scene directory,you can replace the swordman in world scene with it,maybe its a worth trying for newer to godot.
+## About:
+    Currently this project is just a demo,the sword man can't damage the wolf man,and there is a shooter <b>ass6.5.tscn</b> exist in the Scene directory,you can replace the swordman in world scene with it,maybe its a worth trying for newer to godot.
     
-##Tip:
+## Tip:
     To open this project you need build Godot with module futari-addon,otherwise may cause crash:tscn cant open etc..
     This is the link:https://gitlab.com/polymorphcool/futari-addon   
 
